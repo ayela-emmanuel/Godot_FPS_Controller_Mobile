@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvmtn4ihnpqlk"]
+
+[ext_resource type="Script" path="res://Scripts/Character_Movment.cs" id="1_4ntt0"]
+[ext_resource type="PackedScene" uid="uid://dok64pp8wb486" path="res://Character/GUI_Gameplay.tscn" id="2_3fdts"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oipg5"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_c8j6q"]
+
+[node name="Character" type="CharacterBody3D"]
+script = ExtResource("1_4ntt0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_oipg5")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.761239, 0)
+
+[node name="GuiGameplay" parent="Camera3D" instance=ExtResource("2_3fdts")]
+offset_right = -750.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_c8j6q")
