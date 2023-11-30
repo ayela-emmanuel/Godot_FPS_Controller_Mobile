@@ -25,7 +25,11 @@ public partial class Character_Movment : CharacterBody3D
 			if(TouchIndex == Input.Index ){
 				var inputValue = (Input.Position - fingerPosition)*TouchSensitivity;
 				RotateY(inputValue.X*-.5f);
-				camera.RotateX(inputValue.Y*-.5f);
+
+
+				// camera.RotateX(inputValue.Y*-.5f);
+				var tmpXrot = camera.RotationDegrees.X+inputValue.Y*-30;
+				camera.RotationDegrees = new Vector3(Math.Clamp(tmpXrot,-90,90),camera.RotationDegrees.Y,camera.RotationDegrees.Z);
 				fingerPosition = Input.Position;
 			}
 			
